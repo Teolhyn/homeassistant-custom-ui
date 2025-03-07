@@ -5,6 +5,10 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <header className='bg-cyan-950 font-manrope tracking-tighter'>
+      <div className="bg-[url('/sssquiggly.svg')] h-screen bg-cover">
+        <App />
+      </div>
+    </header>
+  </StrictMode >,
 )
