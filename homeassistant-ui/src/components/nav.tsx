@@ -1,4 +1,9 @@
-const nav = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb } from '@fortawesome/free-regular-svg-icons/faLightbulb';
+import { faBuilding } from '@fortawesome/free-regular-svg-icons/faBuilding';
+import { faSun } from '@fortawesome/free-regular-svg-icons/faSun';
+
+const Nav = () => {
 
   return (
     <div className="navbar backdrop-blur-lg shadow-sm bg-gray-950/40">
@@ -25,12 +30,12 @@ const nav = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><a></a></li>
-          <li><a></a></li>
-          <li><a></a></li>
-          <li><a></a></li>
-          <li><a></a></li>
-          <li><a></a></li>
+          <li><a><FontAwesomeIcon icon={faBuilding} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
+          <li><a><FontAwesomeIcon icon={faSun} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
         </ul>
       </div>
       <div className="navbar-end">
@@ -40,4 +45,4 @@ const nav = () => {
   )
 }
 
-export default nav;
+export default Nav;
