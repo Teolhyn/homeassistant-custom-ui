@@ -1,20 +1,33 @@
-import Lightcard from "./components/lightcard.tsx";
-import Nav from "./components/nav.tsx";
+import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
-const titles = ["Keittiö", "Olohuone", "Työhuone", "Makuuhuone"];
+import LightCardPage from "./pages/LightCardPage";
+import OverviewPage from "./pages/OverviewPage.tsx";
+import Nav from "./components/nav";
 
-function App() {
+const pages = [<LightCardPage />, <OverviewPage />];
+
+export default function App() {
+  const [index, setIndex] = useState(0);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setIndex((prev) => Math.min(prev + 1, pages.length - 1)),
+    onSwipedRight: () => setIndex((prev) => Math.max(prev - 1, 0)),
+    trackMouse: true,
+  });
 
   return (
     <div>
       <Nav />
-      <div className="p-4 flex flex-wrap gap-4 justify-center">
-        {titles.map((title, index) => (
-          <Lightcard key={index} title={title} />
-        ))}
+      <div {...handlers} className="w-full h-[calc(100vh-64px)] overflow-hidden flex items-center justify-center">
+        <div className="w-full h-full transition-transform duration-300" style={{ transform: `translateX(-${index * 100}%)`, display: "flex" }}>
+          {pages.map((Page, i) => (
+            <div key={i} className="w-full h-full flex-shrink-0">
+              {Page}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default App
