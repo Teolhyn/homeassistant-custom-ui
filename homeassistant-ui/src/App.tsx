@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 import LightCardPage from "./pages/LightCardPage";
-import OverviewPage from "./pages/OverviewPage.tsx";
+import OverviewPage from "./pages/OverviewPage";
 import Nav from "./components/nav";
+import { WebSocketProvider } from "./context/WebSocketContext";
 
 const pages = [<LightCardPage />, <OverviewPage />];
 
@@ -17,10 +18,10 @@ export default function App() {
   });
 
   return (
-    <div>
+    <WebSocketProvider>
       <Nav />
       <div {...handlers} className="w-full h-[calc(100vh-64px)] overflow-hidden flex items-center justify-center">
-        <div className="w-full h-full transition-transform duration-300" style={{ transform: `translateX(-${index * 100}%)`, display: "flex" }}>
+        <div className="w-full h-full transition-transform duration-300 flex" style={{ transform: `translateX(-${index * 100}%)` }}>
           {pages.map((Page, i) => (
             <div key={i} className="w-full h-full flex-shrink-0">
               {Page}
@@ -28,6 +29,7 @@ export default function App() {
           ))}
         </div>
       </div>
-    </div>
+    </WebSocketProvider>
   );
 }
+
