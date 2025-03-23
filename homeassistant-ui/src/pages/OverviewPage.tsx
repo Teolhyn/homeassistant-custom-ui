@@ -1,15 +1,17 @@
-import Lightcard from "../components/lightcard.tsx";
-
-const titles = ["Keittiö", "Olohuone", "Työhuone", "Makuuhuone"];
+import DateTimeCard from "../components/datetimecard"
+import WeatherCard from "../components/weathercard"
+import ElectricityPriceCard from "../components/electricitypricegraph"
 
 function OverviewPage() {
-
   return (
-    <div className="p-4 flex flex-wrap gap-4 justify-center">
-      {titles.map((title, index) => (
-        <Lightcard key={index} title={title} />
-      ))}
-      SECOND PAGE
+    <div className="p-4 m-7 flex-col bg-gray-950/40 backdrop-blur-sm rounded-2xl flex-wrap gap-4 justify-between">
+      <div className="flex justify-between">
+        <WeatherCard />
+        <DateTimeCard />
+      </div>
+      <div>
+        <ElectricityPriceCard />
+      </div>
     </div>
   )
 }

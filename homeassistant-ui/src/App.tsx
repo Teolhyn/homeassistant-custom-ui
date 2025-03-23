@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 import LightCardPage from "./pages/LightCardPage";
+import StockPage from "./pages/StockPage";
+import WeatherPage from "./pages/WeatherPage";
 import OverviewPage from "./pages/OverviewPage";
 import Nav from "./components/nav";
 import { WebSocketProvider } from "./context/WebSocketContext";
 
-const pages = [<LightCardPage />, <OverviewPage />];
+const pages = [<OverviewPage />, <LightCardPage />, <WeatherPage />, <StockPage />];
 
 export default function App() {
   const [index, setIndex] = useState(0);
@@ -19,7 +21,7 @@ export default function App() {
 
   return (
     <WebSocketProvider>
-      <Nav />
+      <Nav index={index} />
       <div {...handlers} className="w-full h-[calc(100vh-64px)] overflow-hidden flex items-center justify-center">
         <div className="w-full h-full transition-transform duration-300 flex" style={{ transform: `translateX(-${index * 100}%)` }}>
           {pages.map((Page, i) => (

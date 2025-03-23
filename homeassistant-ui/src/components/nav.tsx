@@ -3,7 +3,11 @@ import { faLightbulb } from '@fortawesome/free-regular-svg-icons/faLightbulb';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons/faBuilding';
 import { faSun } from '@fortawesome/free-regular-svg-icons/faSun';
 
-const Nav = () => {
+interface NavProps {
+  index: number;
+}
+
+const Nav: React.FC<NavProps> = ({ index }) => {
 
   return (
     <div className="navbar backdrop-blur-lg shadow-sm bg-gray-950/40">
@@ -30,16 +34,16 @@ const Nav = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><a><FontAwesomeIcon icon={faBuilding} /></a></li>
-          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
-          <li><a><FontAwesomeIcon icon={faSun} /></a></li>
-          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
-          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
-          <li><a><FontAwesomeIcon icon={faLightbulb} /></a></li>
+          <li><a><FontAwesomeIcon icon={faBuilding} className={`transition-colors ${index === 0 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 1 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faSun} className={`transition-colors ${index === 2 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 3 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 4 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 5 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Settings</a>
+        <a className="btn invisible">Settings</a>
       </div>
     </div>
   )
