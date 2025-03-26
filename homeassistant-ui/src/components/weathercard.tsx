@@ -61,7 +61,7 @@ const getWeekday = (dateString: string) => {
 const WeatherIcon: React.FC<WeatherIconProps> = ({ state, size }) => {
   if (!state) return null;
 
-  return <img src={getWeatherIcon(state)} className={`w-${size}`} alt={state} />;
+  return <img src={getWeatherIcon(state)} style={{ width: `${size}px`, height: `${size}px` }} className="object-contain" alt={state} />;
 };
 
 function WeatherCard() {
@@ -113,9 +113,9 @@ function WeatherCard() {
 
   return (
     <div className="transition-all p-5 rounded-2xl text-2xl">
-      <div className='flex'>
-        <WeatherIcon state={weatherState} size={64} />
-        <div>
+      <div className='flex justify-between w-lg'>
+        <WeatherIcon state={weatherState} size={230} />
+        <div className='mt-8'>
           <div className='text-8xl'>
             {weatherAttributes?.temperature}
             {weatherAttributes?.temperature_unit}
@@ -127,10 +127,10 @@ function WeatherCard() {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-5 grid-rows-4 max-h-35 place-items-start ml-5'>
+      <div className='grid grid-cols-5 grid-rows-4 max-h-35 mr-2'>
         {weatherForecast.length > 0 ? (
           weatherForecast.slice(0, 5).map((forecast, index) => (
-            <div key={index} className={`col-start-${index + 1} row-start-1`}>
+            <div key={index} className={`col-start-${index + 1} row-start-1 text-center`}>
               {getWeekday(forecast.datetime)}
             </div>
           ))
@@ -140,8 +140,8 @@ function WeatherCard() {
 
         {weatherForecast.length > 0 ? (
           weatherForecast.slice(0, 5).map((forecast, index) => (
-            <div key={index} className={`col-start-${index + 1} row-start-2`}>
-              <WeatherIcon state={forecast.condition} size={8} />
+            <div key={index} className={`col-start-${index + 1} row-start-2 ml-7`}>
+              <WeatherIcon state={forecast.condition} size={64} />
             </div>
           ))
         ) : (
@@ -150,7 +150,7 @@ function WeatherCard() {
 
         {weatherForecast.length > 0 ? (
           weatherForecast.slice(0, 5).map((forecast, index) => (
-            <div key={index} className={`col-start-${index + 1} row-start-3`}>
+            <div key={index} className={`col-start-${index + 1} row-start-3 text-right mt-2`}>
               <p>{forecast.temperature} {weatherAttributes?.temperature_unit} </p>
             </div>
           ))
@@ -160,7 +160,7 @@ function WeatherCard() {
 
         {weatherForecast.length > 0 ? (
           weatherForecast.slice(0, 5).map((forecast, index) => (
-            <div key={index} className={`col-start-${index + 1} row-start-4 opacity-45`}>
+            <div key={index} className={`col-start-${index + 1} row-start-4 opacity-45 text-right`}>
               <p>{forecast.templow} {weatherAttributes?.temperature_unit} </p>
             </div>
           ))
