@@ -18,7 +18,7 @@ interface WebSocketContextType {
   sendServiceCommand: (domain: string, service: string, entityId: string, serviceData?: object) => void;
 }
 
-const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
+export const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
 
 export const WebSocketProvider = ({ children }: { children: React.ReactNode }) => {
   const [entities, setEntities] = useState<HassEntities | null>(null);
@@ -28,7 +28,7 @@ export const WebSocketProvider = ({ children }: { children: React.ReactNode }) =
   useEffect(() => {
     async function connect() {
       try {
-        const auth: Auth = await getAuth({ hassUrl: "http://192.168.11.55:8123" });
+        const auth: Auth = await getAuth({ hassUrl: "http://192.168.11.88:8123" });
         const conn = await createConnection({ auth });
         console.log("connection intialized", conn);
         setConnection(conn);

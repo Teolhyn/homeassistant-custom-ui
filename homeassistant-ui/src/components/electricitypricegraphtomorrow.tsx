@@ -13,7 +13,7 @@ function ElectricityPriceCardTomorrow() {
         toolbar: { show: false }
       },
       xaxis: {
-        categories: Array(24)
+        categories: Array(96)
           .fill("")
           .map((_, i) => `${String(i).padStart(2, "0")}`),
         labels: {
@@ -47,7 +47,7 @@ function ElectricityPriceCardTomorrow() {
 
   useEffect(() => {
     if (entities) {
-      const electricityAttributes = entities["sensor.nordpool_kwh_fi_eur_2_10_0255"]?.attributes;
+      const electricityAttributes = entities["sensor.nordpool_kwh_fi_eur_3_10_0255"]?.attributes;
 
       if (electricityAttributes) {
         const tomorrowPrices = electricityAttributes.tomorrow || [];
@@ -67,7 +67,7 @@ function ElectricityPriceCardTomorrow() {
           toolbar: { show: false }
         },
         xaxis: {
-          categories: Array(24)
+          categories: Array(96)
             .fill("")
             .map((_, i) => `${String(i).padStart(2, "0")}`),
           labels: {

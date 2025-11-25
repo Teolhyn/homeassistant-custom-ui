@@ -6,6 +6,8 @@ function ElectricityPriceCardToday() {
   const [priceTodaySeries, setPriceTodaySeries] = useState<number[]>([]);
   const { entities } = useWebSocket();
 
+  console.log(entities)
+
   const [chartData, setChartData] = useState({
     options: {
       chart: {
@@ -13,7 +15,7 @@ function ElectricityPriceCardToday() {
         toolbar: { show: false }
       },
       xaxis: {
-        categories: Array(24)
+        categories: Array(96)
           .fill("")
           .map((_, i) => `${String(i).padStart(2, "0")}`),
         labels: {
@@ -47,7 +49,7 @@ function ElectricityPriceCardToday() {
 
   useEffect(() => {
     if (entities) {
-      const electricityAttributes = entities["sensor.nordpool_kwh_fi_eur_2_10_0255"]?.attributes;
+      const electricityAttributes = entities["sensor.nordpool_kwh_fi_eur_3_10_0255"]?.attributes;
 
       if (electricityAttributes) {
         const todayPrices = electricityAttributes.today || [];
@@ -67,7 +69,7 @@ function ElectricityPriceCardToday() {
           toolbar: { show: false }
         },
         xaxis: {
-          categories: Array(24)
+          categories: Array(96)
             .fill("")
             .map((_, i) => `${String(i).padStart(2, "0")}`),
           labels: {
@@ -103,7 +105,7 @@ function ElectricityPriceCardToday() {
   return (
     <div>
       <div>
-        <h1 className="text-2xl text-center">Sähkön hinta nyt: {entities ? entities["sensor.nordpool_kwh_fi_eur_2_10_0255"]?.attributes.current_price : "N/A"}</h1>
+        <h1 className="text-2xl text-center">Sähkön hinta nyt: {entities ? entities["sensor.nordpool_kwh_fi_eur_3_10_0255"]?.attributes.current_price : "N/A"}</h1>
       </div>
       <Chart options={chartData.options} series={chartData.series} type="line" height="300" width={500} />
     </div>

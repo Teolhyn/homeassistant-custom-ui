@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb } from '@fortawesome/free-regular-svg-icons/faLightbulb';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons/faBuilding';
+import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons/faFireFlameCurved';
 import { faSun } from '@fortawesome/free-regular-svg-icons/faSun';
 
 interface NavProps {
@@ -36,8 +37,8 @@ const Nav: React.FC<NavProps> = ({ index }) => {
         <ul className="menu menu-horizontal px-1">
           <li><a><FontAwesomeIcon icon={faBuilding} className={`transition-colors ${index === 0 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
           <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 1 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
-          <li><a><FontAwesomeIcon icon={faSun} className={`transition-colors ${index === 2 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
-          <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 3 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faFireFlameCurved} className={`transition-colors ${index === 2 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
+          <li><a><FontAwesomeIcon icon={faSun} className={`transition-colors ${index === 3 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
           <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 4 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
           <li><a><FontAwesomeIcon icon={faLightbulb} className={`transition-colors ${index === 5 ? "text-yellow-500" : "text-white-400"}`} /></a></li>
         </ul>
