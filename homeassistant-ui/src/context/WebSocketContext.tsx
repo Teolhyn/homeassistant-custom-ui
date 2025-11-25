@@ -18,7 +18,7 @@ interface WebSocketContextType {
   sendServiceCommand: (domain: string, service: string, entityId: string, serviceData?: object) => void;
 }
 
-export const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
+const WebSocketContext = createContext<WebSocketContextType | undefined>(undefined);
 
 export const WebSocketProvider = ({ children }: { children: React.ReactNode }) => {
   const [entities, setEntities] = useState<HassEntities | null>(null);

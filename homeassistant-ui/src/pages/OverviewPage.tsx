@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import DateTimeCard from "../components/datetimecard";
 import WeatherCard from "../components/weathercard";
-import ElectricityPriceCardTomorrow from "../components/electricitypricegraphtomorrow";
-import ElectricityPriceCardToday from "../components/electricitypricegraphtoday";
+import PositiveAndNegativeBarChart from "../components/chart";
 import { motion } from "framer-motion";
 
 function OverviewPage() {
@@ -36,9 +35,9 @@ function OverviewPage() {
               transition={{ duration: 2 }}
             >
               {isFirstElement ? (
-                <ElectricityPriceCardToday />
+                < PositiveAndNegativeBarChart title="Sähkön hinta tänään" sensor="sensor.nordpool_kwh_fi_eur_3_10_0255" day="today" />
               ) : (
-                <ElectricityPriceCardTomorrow />
+                < PositiveAndNegativeBarChart title="Sähkön hinta huomenna" sensor="sensor.nordpool_kwh_fi_eur_3_10_0255" day="tomorrow" />
               )}
             </motion.div>
           </div>
