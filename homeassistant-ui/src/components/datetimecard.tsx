@@ -48,11 +48,11 @@ function DateTimeCard() {
   })
 
   return (
-    <div className="transition-all p-5">
+    <div className="transition-all text-right p-5">
       <div className="text-9xl">
         {time}
       </div>
-      <div className="text-2xl text-right mt-2">
+      <div className="text-2xl mt-2">
         {date}
       </div>
     </div>
