@@ -1,54 +1,15 @@
-# React + TypeScript + Vite
+# Custom React Homeassistant UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React user interface for homeassistant. It uses WebSocket connection to transfer data between client and homeassistant server. WebSocket authentication works through the native homeassistant login, which opens up when first connecting from a new client.
 
-Currently, two official plugins are available:
+## Important
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is not a plug and play UI that works for anyones and everyones instance of Homeassistant. It is very much tailored to what I use homeassistant for and what devices I have. However, it can be easily modified to work with whatever you may have. The main thing is that the React context handles entity fetching and therefore all existing and to-be-developed components can access your entities through the context. To access the entities in context and to send service commands in your component, simply:
 
-## Expanding the ESLint configuration
+```typescript
+import { useWebSocket } from "../context/WebSocketContext";
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+const Foo = () => {
+  const { entities, sendServiceCommand } = useWebSocket();
+};
 ```
